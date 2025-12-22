@@ -30,6 +30,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="<?php echo e(route('userActivity')); ?>">Activity</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo e(route('createUser')); ?>">Create User</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?php echo e(route('myaccount')); ?>">My Account</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo e(route('logout')); ?>">Logout</a></li>
                 </ul>
             </div>

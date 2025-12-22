@@ -30,6 +30,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ route('userActivity') }}">Activity</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('createUser') }}">Create User</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('myaccount') }}">My Account</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}">Logout</a></li>
                 </ul>
             </div>

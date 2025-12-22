@@ -17,6 +17,42 @@ class DashboardController extends Controller
         return view('Dashboard.index',compact('UserList'));
     }
 
+    public function MyAccount(){
+        $users = Auth::user();
+        return view('Dashboard.Users.account',compact('users'));
+    }
+
+    public function MyAccountPost(Request $request){
+         $user = Auth::user();
+
+        // Validate the incoming request
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'password' => 'nullable|string|min:8|confirmed',
+        ]);
+        $user->activities()->create([
+            'activity' => 'Password Updated',
+            'ip_address' => $request->ip(),
+            'user_agent' => $request->header('User-Agent'),
+        ]);
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+
+         // Update the password if provided
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->input('password'));
+        }
+
+        $user->save(); // Save changes to the database
+
+        return redirect()
+            ->route('myaccount')
+            ->with('success', 'Account updated successfully.');
+
+    }
+
     // User activity page
     public function userActivity()
     {

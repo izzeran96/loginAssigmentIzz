@@ -13,15 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('signIn','LoginController@index')->name('signInPage');
+Route::get('/','LoginController@index')->name('signInPage');
 Route::post('signinPost','LoginController@loginPost')->name('signinPost');
 Route::get('register','RegisterController@index')->name('registerPage');
 Route::post('registerPost','RegisterController@registerPost')->name('registerPost');
 Route::middleware(['auth'])->group(function () {
+    Route::get('myaccount','DashboardController@MyAccount')->name('myaccount');
+    Route::patch('myaccount/post','DashboardController@MyAccountPost')->name('myaccountPost');
     Route::prefix('access')->group(function(){
     Route::get('dashboard','DashboardController@index')->name('dashboard');
     Route::get('activity','DashboardController@userActivity')->name('userActivity');
