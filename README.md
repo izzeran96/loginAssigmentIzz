@@ -35,3 +35,7 @@ cd loginAssigmentIzz
 composer install
 cp .env.example .env
 php artisan key:generate
+php artisan migrate:fresh --seed
+
+Login Example
+Email test001@example.com until test010@exampe.com
