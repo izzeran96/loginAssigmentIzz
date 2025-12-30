@@ -28,6 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('cms','CmsPostController@index')->name('cms.index');
     Route::get('cms/create','CmsPostController@cmsContent')->name('cms.post');
     Route::post('cms/create/post','CmsPostController@cmsPostContent')->name('cms.createPost');
+Route::patch('cms/update/{id}', 'CmsPostController@editPost')->name('cms.updatePost');
 
     Route::get('cms/edit/{title}/{id}','CmsPostController@edit')->name('cms.edit');
 

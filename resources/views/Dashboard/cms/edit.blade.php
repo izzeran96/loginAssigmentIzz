@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    <form action="" method="post" class="form">
+    <form action="{{ route('cms.updatePost', $content->id) }}" method="post" class="form">
         @csrf
         @method('patch')
         <div class="form-group">
@@ -18,6 +18,6 @@
             <label for="content">Content</label>
             <textarea name="content" class="form-control" id="" cols="30" rows="10">{{$content->content}}</textarea>
         </div>
-        <input type="submit" class="btn btn-primary" value="Post A content">
+        <input type="submit" class="btn btn-primary" value="Update A content">
     </form>
 @endsection

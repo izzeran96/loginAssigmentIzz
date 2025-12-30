@@ -1,5 +1,5 @@
 <?php $__env->startSection('content'); ?>
-    <form action="" method="post" class="form">
+    <form action="<?php echo e(route('cms.updatePost', $content->id)); ?>" method="post" class="form">
         <?php echo csrf_field(); ?>
         <?php echo method_field('patch'); ?>
         <div class="form-group">

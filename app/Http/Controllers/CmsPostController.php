@@ -44,10 +44,31 @@ class CmsPostController extends Controller
         return view('Dashboard.cms.edit', compact('content'));
     }
 
-    public function editPost(Request $request){
+    public function editPost(Request $request, $id)
+    {
         $request->validate([
-            'title' => 'required|string|max:255',
+            'title'   => 'required|string|max:255',
             'content' => 'required',
+            'tags'    => 'nullable|string',
         ]);
+
+        $post = PostContent::findOrFail($id);
+
+        $post->update([
+            'title'   => $request->title,
+            'content' => $request->content,
+            'tags'    => $request->tags,
+        ]);
+
+        Auth::user()->activities()->create([
+            'activity'   => 'Post Updated => ' . $post->title,
+            'ip_address' => request()->ip(),
+            'user_agent' => request()->userAgent(),
+        ]);
+
+        return redirect()
+            ->route('cms.index')
+            ->with('success', 'Content has been updated successfully!');
     }
+
 }
