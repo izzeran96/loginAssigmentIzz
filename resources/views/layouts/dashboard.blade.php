@@ -29,6 +29,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ route('userActivity') }}">Activity</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('cms.index') }}">CMS</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('createUser') }}">Create User</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('myaccount') }}">My Account</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}">Logout</a></li>
@@ -39,6 +40,11 @@
 
     <!-- Main container -->
     <div class="container section">
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         @yield('content')
     </div>
 

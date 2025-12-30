@@ -29,6 +29,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="<?php echo e(route('userActivity')); ?>">Activity</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?php echo e(route('cms.index')); ?>">CMS</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo e(route('createUser')); ?>">Create User</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo e(route('myaccount')); ?>">My Account</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo e(route('logout')); ?>">Logout</a></li>
@@ -39,6 +40,12 @@
 
     <!-- Main container -->
     <div class="container section">
+        <?php if(session('success')): ?>
+            <div class="alert alert-success">
+                <?php echo e(session('success')); ?>
+
+            </div>
+        <?php endif; ?>
         <?php echo $__env->yieldContent('content'); ?>
     </div>
 

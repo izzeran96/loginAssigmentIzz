@@ -25,6 +25,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard','DashboardController@index')->name('dashboard');
     Route::get('activity','DashboardController@userActivity')->name('userActivity');
 
+    Route::get('cms','CmsPostController@index')->name('cms.index');
+    Route::get('cms/create','CmsPostController@cmsContent')->name('cms.post');
+    Route::post('cms/create/post','CmsPostController@cmsPostContent')->name('cms.createPost');
+
+    Route::get('cms/edit/{title}/{id}','CmsPostController@edit')->name('cms.edit');
+
     Route::get('create','DashboardController@userCreate')->name('createUser');
     Route::post('create/post','DashboardController@userCreatePost')->name('createUserPost');
     Route::get('edit/{id}','DashboardController@userEdit')->name('editUser');
